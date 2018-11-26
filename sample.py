@@ -191,6 +191,7 @@ def main():
         print("1) Search by location and term") #separate into submenu for reataurants, yes?
         print("2) Display top 10 open restaurants by location")
         print("3) Search for home services")
+        print("\n")
 
         user_option = int(input("Please select an option: "))
         if user_option == 0:
@@ -201,6 +202,7 @@ def main():
             user_search_limit = int(input(("Enter a search limit: ")))
             try:
                 business_list = return_business_name(user_term, user_location, user_search_limit) #takes specified amount of businesses and stores them in bussiness_list
+                print("\n")
                 while(loop == 1):
                     for i in range(user_search_limit):
                         print(str(i+1) + ")" + " " + business_list[i]['name'])
@@ -218,8 +220,9 @@ def main():
                 )
         elif user_option == 2:   #returns list of 10 top open restaurants
             user_location = raw_input("Enter a location (i.e. San Francisco, CA): ")
+            print("\n")
             try:
-                business_list = return_business_name("Top 10 Restaurants", user_location, 10)
+                business_list = return_business_name("The Best 10 Restaurants", user_location, 10)
                 while(loop == 1):
                     for i in range(10): #for top 10 list, original option select
                         print(str(i+1) + ")" + " " + business_list[i]['name'])
@@ -237,6 +240,7 @@ def main():
                 )
 
         elif user_option == 3:
+            print("\n")
             print("1) Contractors")
             print("2) Electricians")
             print("3) Home Cleaners")
@@ -247,12 +251,12 @@ def main():
             print("8) Plumbers")
 
             home_service_option = int(input("Select an option: "))
-
             user_location = raw_input("Enter a location (i.e. San Francisco, CA): ")
+            print("\n")
 
             if home_service_option == 1:
                 try:
-                    business_list = return_business_name("Top 10 Contractors", user_location, 10)
+                    business_list = return_business_name("The Best 10 Contractors", user_location, 10)
                     while(loop == 1):
                         for i in range(10): #for top 10 list, original option select
                             print(str(i+1) + ")" + " " + business_list[i]['name'])
@@ -270,9 +274,145 @@ def main():
                         )
                     )
 
+            elif home_service_option == 2:
+                try:
+                    business_list = return_business_name("The Best 10 Electricians", user_location, 10)
+                    while(loop == 1):
+                        for i in range(10): #for top 10 list, original option select
+                            print(str(i+1) + ")" + " " + business_list[i]['name'])
+                        business_option = int(input("Select the business you would like to know more about\n or type 0 to go back to menu: "))
+                        if business_option == 0:
+                            break
+                        format_business_info(business_list, business_option)
 
+                except HTTPError as error:
+                    sys.exit(
+                        'Encountered HTTP error {0} on {1}:\n {2}\nAbort program.'.format(
+                            error.code,
+                            error.url,
+                            error.read(),
+                        )
+                    )
 
+            elif home_service_option == 3:
+                try:
+                    business_list = return_business_name("The Best 10 Home Cleaners", user_location, 10)
+                    while(loop == 1):
+                        for i in range(10): #for top 10 list, original option select
+                            print(str(i+1) + ")" + " " + business_list[i]['name'])
+                        business_option = int(input("Select the business you would like to know more about\n or type 0 to go back to menu: "))
+                        if business_option == 0:
+                            break
+                        format_business_info(business_list, business_option)
 
+                except HTTPError as error:
+                    sys.exit(
+                        'Encountered HTTP error {0} on {1}:\n {2}\nAbort program.'.format(
+                            error.code,
+                            error.url,
+                            error.read(),
+                        )
+                    )
+
+            elif home_service_option == 4:
+                try:
+                    business_list = return_business_name("The Best 10 Heating & Air Conditioning/HVAC", user_location, 10)
+                    while(loop == 1):
+                        for i in range(10): #for top 10 list, original option select
+                            print(str(i+1) + ")" + " " + business_list[i]['name'])
+                        business_option = int(input("Select the business you would like to know more about\n or type 0 to go back to menu: "))
+                        if business_option == 0:
+                            break
+                        format_business_info(business_list, business_option)
+
+                except HTTPError as error:
+                    sys.exit(
+                        'Encountered HTTP error {0} on {1}:\n {2}\nAbort program.'.format(
+                            error.code,
+                            error.url,
+                            error.read(),
+                        )
+                    )
+
+            elif home_service_option == 5:
+                try:
+                    business_list = return_business_name("The Best 10 Landscaping", user_location, 10)
+                    while(loop == 1):
+                        for i in range(10): #for top 10 list, original option select
+                            print(str(i+1) + ")" + " " + business_list[i]['name'])
+                        business_option = int(input("Select the business you would like to know more about\n or type 0 to go back to menu: "))
+                        if business_option == 0:
+                            break
+                        format_business_info(business_list, business_option)
+
+                except HTTPError as error:
+                    sys.exit(
+                        'Encountered HTTP error {0} on {1}:\n {2}\nAbort program.'.format(
+                            error.code,
+                            error.url,
+                            error.read(),
+                        )
+                    )
+
+            elif home_service_option == 6:
+                try:
+                    business_list = return_business_name("The Best 10 Keys & Locksmiths", user_location, 10)
+                    while(loop == 1):
+                        for i in range(10): #for top 10 list, original option select
+                            print(str(i+1) + ")" + " " + business_list[i]['name'])
+                        business_option = int(input("Select the business you would like to know more about\n or type 0 to go back to menu: "))
+                        if business_option == 0:
+                            break
+                        format_business_info(business_list, business_option)
+
+                except HTTPError as error:
+                    sys.exit(
+                        'Encountered HTTP error {0} on {1}:\n {2}\nAbort program.'.format(
+                            error.code,
+                            error.url,
+                            error.read(),
+                        )
+                    )
+
+            elif home_service_option == 7:
+                try:
+                    business_list = return_business_name("The Best 10 Movers", user_location, 10)
+                    while(loop == 1):
+                        for i in range(10): #for top 10 list, original option select
+                            print(str(i+1) + ")" + " " + business_list[i]['name'])
+                        business_option = int(input("Select the business you would like to know more about\n or type 0 to go back to menu: "))
+                        if business_option == 0:
+                            break
+                        format_business_info(business_list, business_option)
+
+                except HTTPError as error:
+                    sys.exit(
+                        'Encountered HTTP error {0} on {1}:\n {2}\nAbort program.'.format(
+                            error.code,
+                            error.url,
+                            error.read(),
+                        )
+                    )
+
+            elif home_service_option == 8:
+                try:
+                    business_list = return_business_name("The Best 10 Plumbing", user_location, 10)
+                    while(loop == 1):
+                        for i in range(10): #for top 10 list, original option select
+                            print(str(i+1) + ")" + " " + business_list[i]['name'])
+                        business_option = int(input("Select the business you would like to know more about\n or type 0 to go back to menu: "))
+                        if business_option == 0:
+                            break
+                        format_business_info(business_list, business_option)
+
+                except HTTPError as error:
+                    sys.exit(
+                        'Encountered HTTP error {0} on {1}:\n {2}\nAbort program.'.format(
+                            error.code,
+                            error.url,
+                            error.read(),
+                        )
+                    )
 
 
 if __name__ == '__main__':
