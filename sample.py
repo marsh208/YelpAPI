@@ -20,7 +20,6 @@ from __future__ import print_function
 
 import argparse
 import json
-import pprint
 import requests
 import sys
 import urllib
@@ -188,7 +187,7 @@ def main():
         print("\n")
         print("Welcome to the yelp API!")
         print("0) Quit")
-        print("1) Search by location and term") #separate into submenu for reataurants, yes?
+        print("1) Search by location and term") #separate into submenu for restaurants, yes?
         print("2) Display top 10 open restaurants by location")
         print("3) Search for home services")
         print("\n")
