@@ -117,29 +117,29 @@ def get_business(api_key, business_id):
     return request(API_HOST, business_path, api_key)
 
 #returns all info regarding business id
-def query_api(term, location, limit):
-    """Queries the API by the input values from the user.
-
-    Args:
-        term (str): The search term to query.
-        location (str): The location of the business to query.
-    """
-    response = search(API_KEY, term, location, limit)
-
-    businesses = response.get('businesses')
-
-    if not businesses:
-        print(u'No businesses for {0} in {1} found.'.format(term, location))
-        return
-
-    business_id = businesses[0]['id']
-
-    print(u'{0} businesses found, querying business info ' \
-        'for the top result "{1}" ...'.format(
-            len(businesses), business_id))
-    response = get_business(API_KEY, business_id)
-
-    print(u'Result for business "{0}" found:'.format(business_id))
+# def query_api(term, location, limit):
+#     """Queries the API by the input values from the user.
+#
+#     Args:
+#         term (str): The search term to query.
+#         location (str): The location of the business to query.
+#     """
+#     response = search(API_KEY, term, location, limit)
+#
+#     businesses = response.get('businesses')
+#
+#     if not businesses:
+#         print(u'No businesses for {0} in {1} found.'.format(term, location))
+#         return
+#
+#     business_id = businesses[0]['id']
+#
+#     print(u'{0} businesses found, querying business info ' \
+#         'for the top result "{1}" ...'.format(
+#             len(businesses), business_id))
+#     response = get_business(API_KEY, business_id)
+#
+#     print(u'Result for business "{0}" found:'.format(business_id))
 
 #returns businesses
 def return_business_name(term, location, limit):
@@ -171,14 +171,39 @@ def return_business_name(term, location, limit):
 def format_business_info(businesses, option):   #prints more information on user specified option in main pertaining to selected business
     #####DO TRY CATCH FOR THESE
     print("\n")
-    print("Business Name: " + businesses[option-1]['name'])
-    print("Website Link: " + str(businesses[option-1]['url']))
-    print("Phone Number: " + businesses[option-1]['display_phone']) #business_option - 1 because they are selecting an index in a dictionary
-    print("Address: " + str(businesses[option-1]['location']['address1']))
-    print("Price Range (0-4): " + str(businesses[option-1]['price']))
-    print("Rating (0-5): " + str(businesses[option-1]['rating']))
+    try:
+        print("Business Name: " + businesses[option-1]['name'])
+    except:
+        print("Unable to print out Business Name...")
+
+    try:
+        print("Website Link: " + str(businesses[option-1]['url']))
+    except:
+        print("Unable to print out Website Link...")
+
+    try:
+        print("Phone Number: " + businesses[option-1]['display_phone']) #business_option - 1 because they are selecting an index in a dictionary
+    except:
+        print("Unable to print out Phone Number...")
+
+    try:
+        print("Address: " + str(businesses[option-1]['location']['address1']))
+    except:
+        print("Unable to print Address...")
+
+    try:
+        print("Price Range (0-4): " + str(businesses[option-1]['price']))
+    except:
+        print("Unable to print Price Range...")
+
+    try:
+        print("Rating (0-5): " + str(businesses[option-1]['rating']))
+    except:
+        print("Unable to print Rating...")
     print("\n")
     print("Printing original list... ")
+
+
 
 def main():
 
