@@ -158,7 +158,7 @@ def return_business_name(term, location, limit):
 def format_business_info(businesses, option):   #prints more information on user specified option in main pertaining to selected business
     print("\n")
     try:
-        print("Business Name: " + businesses[option-1]['name'])
+        print("Business Name: " + businesses[option-1]['name'] + "\n---------------------------------------")
     except:
         print("Unable to print out Business Name...")
 
@@ -183,7 +183,7 @@ def format_business_info(businesses, option):   #prints more information on user
         print("Unable to print Price Range...")
 
     try:
-        print("Rating (0-5): " + str(businesses[option-1]['rating']))
+        print("Rating (0-5): " + str(businesses[option-1]['rating']) + " (" + str(businesses[option-1]['review_count']) + " Total Reviews)")
     except:
         print("Unable to print Rating...")
     print("\n")
@@ -205,6 +205,7 @@ def main():
 
         user_option = int(input("Please select an option: "))
         if user_option == 0:
+            print("Goodbye")
             break
         elif user_option == 1: #search by location and food type
             user_term = raw_input("Enter a term to search \n(i.e. breakfast, lunch, dinner, or a business name/type): ")
@@ -233,6 +234,7 @@ def main():
             print("\n")
             try:
                 business_list = return_business_name("The Best 10 Restaurants", user_location, 10)
+                print("\nTop 10 Restaurants:\n--------------------------")
                 while(loop == 1):
                     for i in range(10): #for top 10 list, original option select
                         print(str(i+1) + ")" + " " + business_list[i]['name'])
@@ -240,6 +242,7 @@ def main():
                     if business_option == 0:
                         break
                     format_business_info(business_list, business_option)
+                    print("\n")
             except HTTPError as error:
                 sys.exit(
                     'Encountered HTTP error {0} on {1}:\n {2}\nAbort program.'.format(
