@@ -1,20 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-Yelp Fusion API code sample.
-
 This program demonstrates the capability of the Yelp Fusion API
-by using the Search API to query for businesses by a search term and location,
-and the Business API to query additional information about the top result
-from the search query.
+by using displaying a menu in which users can navigate to find out more information
+about the various business types available on Yelp.
 
-Please refer to http://www.yelp.com/developers/v3/documentation for the API
-documentation.
-
-This program requires the Python requests library, which you can install via:
+The program requires the Python requests library, which can be install via:
 `pip install -r requirements.txt`.
-
-Sample usage of the program:
-`python sample.py --term="bars" --location="San Francisco, CA"`
 """
 from __future__ import print_function
 
@@ -25,25 +16,21 @@ import sys
 import urllib
 
 
-# This client code can run on Python 2.x or 3.x.  Your imports can be
-# simpler if you only need one of those.
+# This client code can run on Python 2.x or 3.x.
+#imports...
 try:
     # For Python 3.0 and later
     from urllib.error import HTTPError
     from urllib.parse import quote
     from urllib.parse import urlencode
 except ImportError:
-    # Fall back to Python 2's urllib2 and urllib
+    # For Python 2's urllib2 and urllib
     from urllib2 import HTTPError
     from urllib import quote
     from urllib import urlencode
 
 
-# Yelp Fusion no longer uses OAuth as of December 7, 2017.
-# You no longer need to provide Client ID to fetch Data
-# It now uses private keys to authenticate requests (API Key)
-# You can find it on
-# https://www.yelp.com/developers/v3/manage_app
+#API constant information
 API_KEY= 'R3Zs7l4Ahk_meyDBaKnIh4kksSQlKU2WGEYO0iM1BQPx3R6U8nAD45C0W_-xZNhS3hNY0YfDtrMPzl6pAvlYRgCqJWQwtzL9KXM5WN_YQrl4CvI_6SSRcGgid8foW3Yx'
 API_HOST = 'https://api.yelp.com'
 SEARCH_PATH = '/v3/businesses/search'
@@ -51,16 +38,16 @@ BUSINESS_PATH = '/v3/businesses/'  # Business ID will come after slash.
 
 
 def request(host, path, api_key, url_params=None):
-    """Given your API_KEY, send a GET request to the API.
+    """Sends a get request to the API using unique key
 
     Args:
         host (str): The domain host of the API.
         path (str): The path of the API after the domain.
-        API_KEY (str): Your API Key.
+        API_KEY (str): Unique API Key.
         url_params (dict): An optional set of query parameters in the request.
 
     Returns:
-        dict: The JSON response from the request.
+        dict: JSON response from the request.
 
     Raises:
         HTTPError: An error occurs from the HTTP request.
@@ -110,6 +97,9 @@ def get_business(api_key, business_id):
 
     return request(API_HOST, business_path, api_key)
 
+
+#Do we need this whole function at all????
+
 #returns all info regarding business id
 # def query_api(term, location, limit):
 #     """Queries the API by the input values from the user.
@@ -142,6 +132,9 @@ def return_business_name(term, location, limit):
     Args:
         term (str): The search term to query.
         location (str): The location of the business to query.
+
+    Returns:
+        dict: the dictionary of limit number of businesses given a term and location
     """
     response = search(API_KEY, term, location, limit)
 
@@ -163,7 +156,6 @@ def return_business_name(term, location, limit):
     return businesses
 
 def format_business_info(businesses, option):   #prints more information on user specified option in main pertaining to selected business
-    #####DO TRY CATCH FOR THESE
     print("\n")
     try:
         print("Business Name: " + businesses[option-1]['name'])
@@ -257,7 +249,7 @@ def main():
                     )
                 )
 
-        elif user_option == 3:
+        elif user_option == 3:  #for home services
             print("\n")
             print("1) Contractors")
             print("2) Electricians")
@@ -432,6 +424,6 @@ def main():
                         )
                     )
 
-
+#runs main
 if __name__ == '__main__':
     main()
