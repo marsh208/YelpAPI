@@ -9,3 +9,6 @@ Contributions:
 -Created menu for restaurant search by location and search term
 -Created menu for top 10 restaurants by area
 -Created menu for home services
+-Updated comments
+-Made console output more visually pleasing
+-Added total ratings in menu
