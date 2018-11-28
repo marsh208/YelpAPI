@@ -125,6 +125,7 @@ def get_business(api_key, business_id):
 #
 #     print(u'Result for business "{0}" found:'.format(business_id))
 
+
 #returns businesses
 def return_business_name(term, location, limit):
     """Queries the API by the input values from the user.
@@ -188,7 +189,6 @@ def format_business_info(businesses, option):   #prints more information on user
         print("Unable to print Rating...")
     print("\n")
     print("Printing original list... ")
-
 
 
 def main():
