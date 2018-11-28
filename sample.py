@@ -234,13 +234,15 @@ def main():
         elif user_option == 2:   #returns list of 10 top open restaurants
             print("\n")
             print("1) Delivery")
-            print("2) Burgers")
-            print("3) Chinese")
-            print("4) Italian")
-            print("5) Reservations")
-            print("6) Japanese")
-            print("7) Mexican")
-            print("8) Thai")
+            print("2) Reservations")
+            print("3) Takeout")
+            print("4) Burgers")
+            print("5) Chinese")
+            print("6) Italian")
+            print("7) Reservations")
+            print("8) Japanese")
+            print("9) Mexican")
+            print("10) Thai")
 
             restaurant_option = int(input("Select an option: "))
 
@@ -248,6 +250,9 @@ def main():
             print("1) Best")
             print("2) Highest Rated")
             print("3) Cheapest")
+            print("4) Hot and New")
+            print("4) Vegan")
+            print("5) Trendy and Hip")
 
             restaurant_sub_option = int(input("Select another option: "))
             user_location = raw_input("Enter a location (i.e. San Francisco, CA): ")
