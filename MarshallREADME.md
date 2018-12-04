@@ -12,3 +12,4 @@ Contributions:
 -Updated comments
 -Made console output more visually pleasing
 -Added total ratings in menu
+-Completed sub_options for restaurants
