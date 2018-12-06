@@ -98,34 +98,6 @@ def get_business(api_key, business_id):
     return request(API_HOST, business_path, api_key)
 
 
-#Do we need this whole function at all????
-
-#returns all info regarding business id
-# def query_api(term, location, limit):
-#     """Queries the API by the input values from the user.
-#
-#     Args:
-#         term (str): The search term to query.
-#         location (str): The location of the business to query.
-#     """
-#     response = search(API_KEY, term, location, limit)
-#
-#     businesses = response.get('businesses')
-#
-#     if not businesses:
-#         print(u'No businesses for {0} in {1} found.'.format(term, location))
-#         return
-#
-#     business_id = businesses[0]['id']
-#
-#     print(u'{0} businesses found, querying business info ' \
-#         'for the top result "{1}" ...'.format(
-#             len(businesses), business_id))
-#     response = get_business(API_KEY, business_id)
-#
-#     print(u'Result for business "{0}" found:'.format(business_id))
-
-
 #returns businesses
 def return_business_name(term, location, limit):
     """Queries the API by the input values from the user.
@@ -205,7 +177,14 @@ def main():
         print("5) Search more")
         print("\n")
 
-        user_option = int(input("Please select an option: "))
+        #input error catching
+        while True:
+            try:
+                user_option = int(input("Please select an option: "))
+                break
+            except:
+                print("Enter an integer between 0 and 5")
+
         if user_option == 0:
             print("Goodbye")
             break
@@ -244,7 +223,14 @@ def main():
             print("9) Mexican")
             print("10) Thai")
 
-            restaurant_option = int(input("Select an option: "))
+            #input error checking
+            while True:
+                try:
+                    restaurant_option = int(input("Select an option: "))
+                    break
+                except:
+                    print("Enter an integer between 0 and 10")
+
 
             print("\n")
             print("1) Best")
@@ -252,7 +238,15 @@ def main():
             print("3) Cheapest")
             print("4) Hot and New")
 
-            restaurant_sub_option = int(input("Select another option: "))
+            #input error checking
+            while True:
+                try:
+                    restaurant_sub_option = int(input("Select another option: "))
+                    break
+                except:
+                    print("Enter an integer between 0 and 4")
+
+
             user_location = raw_input("Enter a location (i.e. San Francisco, CA): ")
             user_search_limit = int(input(("Enter a search limit: ")))
             print("\n")
