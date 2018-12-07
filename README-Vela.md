@@ -15,5 +15,11 @@ Contribution:
 ---Interpreting JSON and Fusion API capabilities
 ---Designed menu navigation for ease of access
 
+More specifically:
+-Worked on looping menu and main interface
+-Created menu for restaurant search by location and search term
+-Created menu for top 10 restaurants by area
+-Created sub_options for restaurants
+-Cleaned code and added more options
 
 
