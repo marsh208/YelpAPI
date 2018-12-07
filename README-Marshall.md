@@ -14,3 +14,4 @@ Contributions:
 -Added total ratings in menu
 -Completed sub_options for restaurants
 -Added error checking
+-Created dockerfile
